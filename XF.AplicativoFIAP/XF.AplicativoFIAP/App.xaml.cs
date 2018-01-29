@@ -13,8 +13,8 @@ namespace XF.AplicativoFIAP
 		{
 			InitializeComponent();
 
-			MainPage = new XF.AplicativoFIAP.MainPage();
-		}
+            MainPage = new NavigationPage(new View.ProfessorView());
+        }
 
 		protected override void OnStart ()
 		{

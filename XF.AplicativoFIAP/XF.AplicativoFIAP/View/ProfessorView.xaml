@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="pageProfessor"
+             x:Class="XF.AplicativoFIAP.View.ProfessorView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adicionar" x:Name="btnAddProfessor" 
+                     Command="{Binding OnNovoCMD}" Order="Primary" Priority="1" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid Padding="5" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
+                <SearchBar Placeholder="Pesquisar por nome" Text="{Binding PesquisaPorNome}" />
+            </StackLayout>
+
+            <StackLayout x:Name="layLista" Grid.Row="1" Padding="7">
+                <ListView x:Name="lstProfessores" ItemsSource="{Binding Professores}"
+                          SelectedItem="{Binding Selecionado, Mode=TwoWay}" RowHeight="55">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Remover" IsDestructive="True"
+                                              Command="{Binding BindingContext.OnDeleteProfessorCMD, Source={x:Reference pageProfessor}}" 
+                                              CommandParameter="{Binding .}" />
+                                    <MenuItem Text="Editar" IsDestructive="False"
+                                              Command="{Binding BindingContext.OnEditarProfessorCMD, Source={x:Reference pageProfessor}}"
+                                              CommandParameter="{Binding .}" />
+                                </ViewCell.ContextActions>
+                                <StackLayout Padding="5,0,5,0">
+                                    <Label Text="{Binding Nome}" Font="15" />
+                                    <Label Text="{Binding Titulo}" Font="12" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

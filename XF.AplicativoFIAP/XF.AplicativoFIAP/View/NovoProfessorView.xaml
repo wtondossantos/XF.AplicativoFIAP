@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XF.AplicativoFIAP.View.NovoProfessorView"
+             Title="Professor">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" x:Name="btnSalvar" Command="{Binding OnAdicionarProfessorCMD}" 
+                     CommandParameter="{Binding BindingContext, Source={x:Reference Name=rootProfessor}}" Order="Primary" Priority="1" />
+        <ToolbarItem Text="Cancelar" x:Name="btnCancelar" Command="{Binding OnSairCMD}" Order="Primary" Priority="2" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="rootProfessor" Padding="7" BindingContext="{Binding Selecionado}">
+            <Entry x:Name="txtNome" Placeholder="Nome" Text="{Binding Nome}" />
+            <Entry x:Name="txtTitulo" Placeholder="Título" Text="{Binding Titulo}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
